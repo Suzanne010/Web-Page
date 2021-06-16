@@ -1,0 +1,90 @@
+<!doctype html>
+<title>Form template with CSS grid auto placement</title>
+<link href="https://fonts.googleapis.com/css?family=Unkempt" rel="stylesheet">
+<style>
+  .myForm > * {
+   font: 1.4em 'Unkempt', sans-serif; 
+  }
+  .myForm {
+    display: grid;
+    grid-template-columns: [labels] auto [controls] 1fr;
+    grid-auto-flow: row;
+    grid-gap: .8em .5em;
+    background:#CBCDCB;
+    padding: 1.2em;
+    width: 36em;
+  }
+  .myForm > label,
+  .myForm > fieldset  {
+    grid-column: labels;
+    grid-row: auto;
+  }
+  .myForm > input, 
+  .myForm > select,
+  .myForm > textarea {
+    grid-column: controls;
+    grid-row: auto;
+    padding: .4em;
+    border: 0;
+  }
+  .myForm > fieldset,
+  .myForm > button {
+    grid-column: span 2;
+  }  
+  .myForm > button {
+    padding: 1em;
+    background: #4C5355;
+    border: 0;
+    color: white;
+    }
+  .myForm > textarea {
+    min-height: 3em;
+    }
+</style>
+<form class="myForm">
+  <label for="customer_name">Name </label>
+  <input type="text" name="customer_name" id="customer_name" required>
+
+  <label for="phone_number">Phone </label>
+  <input type="tel" name="phone_number" id="phone_number">
+
+  <label for="email_address">Email </label>
+  <input type="email" name="email_address" id="email_address">
+
+  <fieldset>
+    <legend>Which vehicle do you require?</legend>
+    <label> <input type="radio" name="vehicle" id="vehicle_car" required value="car"> Car </label>
+    <label> <input type="radio" name="vehicle" id="vehicle_van" required value="van"> Van </label>
+    <label> <input type="radio" name="vehicle" id="vehicle_tuk" required value="tuktuk"> Jeep </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Extras</legend>
+    <label> <input type="checkbox" name="extras" id="extras_baby" value="baby"> Baby Seat </label>
+    <label> <input type="checkbox" name="extras" id="extras_wheel" value="wheelchair"> Wheelchair Access </label>
+    <label> <input type="checkbox" name="extras" id="extras_tip" value="tip"> Stock Tip </label>
+  </fieldset>
+
+  <label for="pickup_time">Pickup Date/Time</label>
+  <input type="datetime-local" name="pickup_time" id="pickup_time" required>
+
+   <label for="comments">Pick Up Place</label>
+ <input type="text" name="Pickup" id="Pickup" required>
+
+  </select>
+
+  <label for="dropoff_place">Dropoff Place</label>
+  <input type="text" name="dropoff_place" id="dropoff_place" required list="destinations">
+
+  <datalist id="destinations">
+    <option value="Airport">
+    <option value="Beach">
+    <option value="Hotel">
+  </datalist>
+
+  <label for="comments">Special Instructions</label>
+  <textarea name="comments" id="comments" maxlength="500"></textarea>
+
+  <button>Submit Booking</button>
+
+</form>
